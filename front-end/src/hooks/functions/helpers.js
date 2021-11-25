@@ -15,7 +15,7 @@ export function updateOrders(orders, data, setOrders) {
   const updateStatusOrder = [...orders];
   const findOrder = updateStatusOrder.findIndex((order) => order.id === data.id);
   if (findOrder >= 0) {
-    updateStatusOrder[findOrder] = data.status;
+    updateStatusOrder[findOrder] = data;
     setOrders(updateStatusOrder);
   }
 }

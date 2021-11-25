@@ -4,6 +4,7 @@ const cors = require('cors');
 
 const app = express();
 
+app.use(cors());
 const { loginController, register } = require('../controllers/loginController');
 const { getProducts } = require('../controllers/productsController');
 const { getSeller, getOrders, getUsers, deleteUsers } = require('../controllers/usersController');
@@ -17,8 +18,6 @@ const {
   verifyEmailDB,
   } = require('../middlewares/middleLogin');
 // const { validateJWT } = require('../middlewares/tokenVerify');
-
-app.use(cors());
 
 app.use(express.json());
 app.use('/', express.static(path.resolve(__dirname, '..', '..', 'public')));

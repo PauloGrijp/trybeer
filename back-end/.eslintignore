@@ -5,3 +5,4 @@ jest.config.js
 /src/coverage
 /src/api/server.js
 /src/controllers/Orders.js
+/src/controllers/severEvents.js

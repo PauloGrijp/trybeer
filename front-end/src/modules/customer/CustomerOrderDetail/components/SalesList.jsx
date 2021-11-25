@@ -22,9 +22,16 @@ function SalesList() {
     getOrder();
   }, []);
 
-  function handleUpdateStatus() {
-    // data ainda vai ser definido;
+  function handleUpdateStatus(status) {
+    const data = { id, status };
     emitUpdateOrder(data);
+  }
+
+  function isEnabled() {
+    if (customerSingleOrder.status === 'Em Trânsito') {
+      return false;
+    }
+    return true;
   }
 
   return (
@@ -52,8 +59,9 @@ function SalesList() {
           <button
             data-testid="customer_order_details__button-delivery-check"
             type="button"
-            disabled
-            onClick={ handleUpdateStatus }
+            disabled={ isEnabled() }
+            name="Entregue"
+            onClick={ ({ target }) => handleUpdateStatus(target.name) }
           >
             MARCAR COMO ENTREGUE
           </button>

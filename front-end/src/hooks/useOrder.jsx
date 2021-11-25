@@ -1,9 +1,12 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-// import { updateOrders, updateSingleOrder } from './functions/helpers';
+// import { useParams } from 'react-router-dom';
 // import socketIOClient from 'socket.io-client';
+import { io } from 'socket.io-client';
+import { getAllOrdersApi } from '../api/orders';
 
-// const URL = 'http://localhost:3001';
+const URL = 'http://localhost:3001';
+const client = io(URL);
 // import {
 //   formatManipulatePrice,
 //   formatSaveAndRenderPrice,
@@ -18,22 +21,29 @@ export function OrderProvider({ children }) {
   const [customerSingleOrder, setCustomerSingleOrder] = useState({});
   const [sellerOrders, setSellerOrders] = useState([]);
   const [sellerSingleOrder, setSellerSingleOrder] = useState({});
+  const [didUpdate, setDidUpdate] = useState(false);
+  const user = JSON.parse(localStorage.getItem('user'));
+  // const { id } = useParams();
 
-  // useEffect(() => {
-  //   const client = socketIOClient(URL);
+  async function getOrders() {
+    const respOrders = await getAllOrdersApi(user.token);
+    setSellerOrders(respOrders);
+  }
 
-  //   client.on('updateStatus', ({ userId, sellerId, status }) => {
-  //     const dataCustomer = { userId, status };
-  //     const dataSeller = { sellerId, status };
-  //     updateOrders(customerOrders, dataCustomer, setCustomerOrders);
-  //     updateSingleOrder(customerSingleOrder, dataCustomer, setCustomerSingleOrder);
-  //     updateOrders(sellerOrders, dataSeller, setSellerOrders);
-  //     updateSingleOrder(sellerSingleOrder, dataSeller, setSellerSingleOrder);
-  //   });
-  // }, []);
+  useEffect(() => {
+    getOrders();
+  }, []);
+  console.log(sellerSingleOrder);
+  client.on('statusUpdated', (data) => {
+    // updateOrders(customerOrders, data, setCustomerOrders);
+    // updateSingleOrder(customerSingleOrder, data, setCustomerSingleOrder);
+    // updateOrders(sellerOrders, data, setSellerOrders);
+    setSellerSingleOrder(data);
+    setCustomerSingleOrder(data);
+    setDidUpdate(!didUpdate);
+  });
 
   function emitUpdateOrder(data) {
-    const client = socketIOClient(URL);
     client.emit('updateStatus', data);
   }
 
@@ -48,7 +58,8 @@ export function OrderProvider({ children }) {
           setSellerOrders,
           sellerSingleOrder,
           setSellerSingleOrder,
-          emitUpdateOrder }
+          emitUpdateOrder,
+          didUpdate }
       }
     >
       { children }

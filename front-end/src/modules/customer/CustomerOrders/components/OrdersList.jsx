@@ -12,7 +12,7 @@ import { useOrder } from '../../../../hooks/useOrder';
 
 export default function OrdersList() {
   const user = JSON.parse(localStorage.getItem('user'));
-  const { customerOrders, setCustomerOrders } = useOrder();
+  const { customerOrders, setCustomerOrders, didUpdate } = useOrder();
 
   useEffect(() => {
     async function allOrders() {
@@ -20,7 +20,7 @@ export default function OrdersList() {
       setCustomerOrders(respOrders);
     }
     allOrders();
-  }, []);
+  }, [didUpdate]);
 
   return (
     <div className="d-flex justify-content-center flex-wrap">
