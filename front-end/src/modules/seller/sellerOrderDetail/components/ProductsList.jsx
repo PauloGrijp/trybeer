@@ -51,7 +51,8 @@ function ProductsList() {
 
   return (
     <div>
-      <div className="conteiner border">
+      <div className="container order-card">
+        <h3>Detalhe do pedido</h3>
         <div className="order-title">
           <span>PEDIDO</span>
           <span
@@ -69,6 +70,7 @@ function ProductsList() {
           </span>
           <button
             type="button"
+            className="btn btn-warning"
             data-testid="seller_order_details__button-preparing-check"
             disabled={ isActivePreparing }
             name="Preparando"
@@ -78,6 +80,7 @@ function ProductsList() {
           </button>
           <button
             type="button"
+            className="btn btn-warning"
             data-testid="seller_order_details__button-dispatch-check"
             disabled={ isActiveDelivery }
             name="Em Trânsito"
@@ -111,6 +114,7 @@ function ProductsList() {
           <span
             data-testid="seller_order_details__element-order-total-price"
           >
+            {'Valor: R$ '}
             { formatSaveAndRenderPrice(sellerSingleOrder.totalPrice) }
           </span>
         </p>
