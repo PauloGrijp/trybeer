@@ -13,7 +13,7 @@ export default function CustomerOrderDetail() {
         item2="Meus pedidos"
         user={ user.name }
       />
-      <div>
+      <div className="container">
         <h3>Detalhe do pedido</h3>
         <SalesList />
       </div>

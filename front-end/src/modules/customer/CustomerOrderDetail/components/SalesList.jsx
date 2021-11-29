@@ -36,29 +36,34 @@ function SalesList() {
 
   return (
     <div>
-      <div className="conteiner">
+      <div className="order-card">
         <div className="order-title">
           <span
             data-testid="customer_order_details__element-order-details-label-order-id"
           >
+            {'Id: '}
             { customerSingleOrder.id }
           </span>
           <span
             data-testid="customer_order_details__element-order-details-label-seller-name"
           >
+            {'Vendedor(a): '}
             { customerSingleOrder.sellerName }
           </span>
           <span
             data-testid="customer_order_details__element-order-details-label-order-date"
           >
+            {'Data: '}
             { formatedDate(new Date(customerSingleOrder.saleDate)) }
           </span>
           <span data-testid={ TEST_STATUS }>
+            {'Status: '}
             { customerSingleOrder.status }
           </span>
           <button
             data-testid="customer_order_details__button-delivery-check"
             type="button"
+            className="btn btn-warning"
             disabled={ isEnabled() }
             name="Entregue"
             onClick={ ({ target }) => handleUpdateStatus(target.name) }
@@ -86,7 +91,7 @@ function SalesList() {
             )}
         </table>
         <p>
-          R$
+          Valor: R$
           <span data-testid="customer_order_details__element-order-total-price">
             { formatSaveAndRenderPrice(customerSingleOrder.totalPrice) }
           </span>

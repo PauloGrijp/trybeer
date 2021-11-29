@@ -1,4 +1,29 @@
 .order-title {
+  align-items: center;
   display: flex;
   justify-content: space-between;
+}
+
+.order-card {
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+  p {
+    color: chocolate;
+    font-size: 32px;
+    font-weight: 600;
+    text-align: right;
+    span {
+      color: chocolate;
+  }
+  }
+}
+
+table {
+  border: 1px solid chocolate;
+  th {
+    background-color: #ffc107;
+  }
 }
