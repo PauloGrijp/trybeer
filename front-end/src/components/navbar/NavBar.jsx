@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, useHistory } from 'react-router-dom';
 import './NavBar.scss';
+import { linkRedirect } from '../../helpers/functions';
 
 function NavBar({ item1, item2, user }) {
   const history = useHistory();
-
   function handleLogout() {
     localStorage.clear();
     history.push('/login');
@@ -15,7 +15,7 @@ function NavBar({ item1, item2, user }) {
     <div className="row d-flex customer-navbar">
       <div className="col-3 inner-customer-navbar">
         <Link
-          to="/customer/products"
+          to={ linkRedirect(item1) }
           data-testid="customer_products__element-navbar-link-products"
         >
           {item1 || ''}
@@ -23,7 +23,7 @@ function NavBar({ item1, item2, user }) {
       </div>
       <div className="col-3 inner-customer-navbar">
         <Link
-          to="/customer/orders"
+          to={ linkRedirect(item2) }
           data-testid="customer_products__element-navbar-link-orders"
         >
           {item2 || ''}

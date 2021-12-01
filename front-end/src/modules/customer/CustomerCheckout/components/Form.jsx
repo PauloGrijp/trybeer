@@ -61,37 +61,53 @@ export default function Form() {
   }, []);
 
   return (
-    <div>
-      <form>
-        <select
-          data-testid="customer_checkout__select-seller"
-          name="seller"
-          id="seller"
-          value={ selectSeller }
-        >
-          {sellers.map(({ id, name }) => (
-            <option key={ id } value={ name }>{ name }</option>
-          ))}
-        </select>
-        <input
-          type="text"
-          data-testid="customer_checkout__input-address"
-          value={ deliveryAddress }
-          onChange={ (e) => setDeliveryAddress(e.target.value) }
-        />
-        <input
-          type="text"
-          data-testid="customer_checkout__input-addressNumber"
-          value={ deliveryNumber }
-          onChange={ (e) => setDeliveryNumber(e.target.value) }
-        />
-        <button
-          data-testid="customer_checkout__button-submit-order"
-          type="button"
-          onClick={ handleFinalizeOrder }
-        >
-          FINALIZAR PEDIDO
-        </button>
+    <div className="container">
+      <form className="row mt-4">
+        <h3>Detalhes e endereço para entrega</h3>
+        <div className="col">
+          <span>Vendedor responsável</span>
+          <select
+            data-testid="customer_checkout__select-seller"
+            className="form-select"
+            name="seller"
+            id="seller"
+            value={ selectSeller }
+          >
+            {sellers.map(({ id, name }) => (
+              <option key={ id } value={ name }>{ name }</option>
+            ))}
+          </select>
+        </div>
+        <div className="col-5">
+          <span>Endereço</span>
+          <input
+            type="text"
+            className="form-control"
+            data-testid="customer_checkout__input-address"
+            value={ deliveryAddress }
+            onChange={ (e) => setDeliveryAddress(e.target.value) }
+          />
+        </div>
+        <div className="col">
+          <span>Número</span>
+          <input
+            type="text"
+            className="form-control"
+            data-testid="customer_checkout__input-addressNumber"
+            value={ deliveryNumber }
+            onChange={ (e) => setDeliveryNumber(e.target.value) }
+          />
+        </div>
+        <div className="col d-flex align-items-center">
+          <button
+            className="btn btn-warning mt-2 w-100"
+            data-testid="customer_checkout__button-submit-order"
+            type="button"
+            onClick={ handleFinalizeOrder }
+          >
+            FINALIZAR PEDIDO
+          </button>
+        </div>
       </form>
     </div>
   );

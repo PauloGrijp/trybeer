@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { getAllOrdersApi } from '../../../../api/orders';
-import OrderCard from '../../../../components/OrderCard';
+import OrderCard from '../../../../components/ordercard/OrderCard';
 import { useOrder } from '../../../../hooks/useOrder';
 
 // const testOrders = [
@@ -23,7 +23,7 @@ export default function OrdersList() {
   }, [didUpdate]);
 
   return (
-    <div className="d-flex flex-wrap">
+    <div className="d-flex justify-content-center flex-wrap">
       {customerOrders.map((order) => <OrderCard key={ order.id } order={ order } />)}
     </div>
   );

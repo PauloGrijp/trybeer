@@ -1,0 +1,73 @@
+table {
+  border-radius: 4px;
+  margin-top: 2rem;
+  padding: 4px;
+}
+
+.sale {
+  .index {
+    background-color: #ffc107;
+    border-bottom: 2px solid white;
+    border-radius: 4px 0 0 4px;
+    font-weight: bold;
+    text-align: center;
+  }
+  .item {
+    background-color: #FFF;
+    border-bottom: 2px solid white;
+    font-weight: bold;
+    text-align: center;
+  }
+  .quantity {
+    background-color: #e6ae06;
+    border-bottom: 2px solid white;
+    text-align: center;
+  }
+  .price {
+    background-color: #ce9c05;
+    border-bottom: 2px solid white;
+    text-align: center;
+    color: #000;
+    span, p {
+      color: #000;
+    }
+  }
+  .subtotal {
+    background-color: #b18708;
+    border-bottom: 2px solid white;
+    text-align: center;
+    color: #000;
+    span, p {
+      color: #000;
+    }
+  }
+  .remove {
+    padding: 0;
+    border-bottom: 2px solid white;
+    button {
+      background-color: #ffc107;
+      border: 0;
+      border-radius: 0 4px 4px 0;
+      font-weight: 500;
+      margin: 0;
+      padding: 6px;
+      width: 100%;
+      &:hover {
+        background-color: #ff7b00;
+      }
+    }
+  }
+}
+
+.total-price {
+  background-color: #ffc10754;
+  border-radius: 0 0 4px 4px;
+  font-size: 30px;
+  font-weight: bold;
+  padding: 0 4px;
+  text-align: right;
+  color: chocolate;
+  p, span {
+    color: chocolate;
+  }
+}

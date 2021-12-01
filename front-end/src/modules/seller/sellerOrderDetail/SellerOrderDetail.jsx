@@ -9,10 +9,9 @@ function SellerOrderDetail() {
   return (
     <OrderProvider>
       <NavBar
-        item1="PEDIDOS"
+        item1="Pedidos"
         user={ user.name }
       />
-      <h3>Detalhe do pedido</h3>
       <ProductsList />
     </OrderProvider>
   );
